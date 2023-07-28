@@ -124,6 +124,10 @@ func (c *Client) Post(ctx context.Context, cr *ClientRequest) (interface{}, *Err
 			return nil, &ErrorTypeAssert
 		}
 
+		if err.Msg == "" {
+			err.Msg = resp.String()
+		}
+
 		return nil, err
 	}
 
